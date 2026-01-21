@@ -13,7 +13,7 @@ struct SnapLedgerApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ExpenseListView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
