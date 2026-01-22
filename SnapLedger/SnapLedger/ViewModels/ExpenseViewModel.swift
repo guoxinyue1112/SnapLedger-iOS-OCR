@@ -48,6 +48,18 @@ class ExpenseViewModel: ObservableObject {
         saveData()
     }
     
+    // --- 新增：删除数据方法 ---
+    func deleteExpense(offsets: IndexSet) {
+        // 1. 根据索引找到对应的实体对象
+        offsets.map { savedEntities[$0] }.forEach { entity in
+            // 2. 从上下文中删除
+            container.viewContext.delete(entity)
+        }
+        
+        // 3. 保存并刷新
+        saveData()
+    }
+    
     // 保存并刷新数据
     private func saveData() {
         do {
